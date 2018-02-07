@@ -84,8 +84,8 @@ function addCharacter() {
 // TODO: 99 is a problem??????
 function sortBars() {
   $('.panel').sort(function (a, b) {
-    var contentA =parseInt( $(a).find('.initiative > input').attr('data-sort'));
-    var contentB =parseInt( $(b).find('.initiative > input').attr('data-sort'));
+    var contentA =parseInt( $(a).find('.initiative > input').attr('data-prev'));
+    var contentB =parseInt( $(b).find('.initiative > input').attr('data-prev'));
     return (contentA < contentB) ? 1 : (contentA > contentB) ? -1 : -1;
   }).appendTo($("#draggablePanelList"));
 }
