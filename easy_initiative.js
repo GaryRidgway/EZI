@@ -34,23 +34,33 @@ jQuery(function($) {
     addCharacter();
     addCharacter();
 });
-
+var panelNum = 0
 // This function will add a new panel that can then be filled out for a new character.
 function addCharacter() {
-    $( "#draggablePanelList" ).append(
+    $( "#draggablePanelList" ).append(''.concat(
         "<li class='panel panel-info'>\
           <div class='panel-heading'>\
-            <a class='remove-character'><i class='fas fa-minus'></i></a>\
+            <a class='remove-character'>\
+              <i class='fas fa-minus'></i>\
+            </a>\
             <div class = 'character'>\
               <input class = 'input-box' type='text' name='character'>\
             </div>\
+            <a class='toggle-body collapsed' data-toggle='collapse' data-target='#panel",panelNum,"'>\
+              <i class='fas fa-caret-down'></i>\
+            </a>\
             <div class = 'initiative'>\
               <input class = 'input-box' type='number' name='quantity' min='-9' max='99' data-sort=''>\
             </div>\
           </div>\
+          <div id='panel",panelNum,"' class='collapse'>\
+            <div class='panel-body'>\
+              Hello World\
+            </div>\
+          </div>\
         </li>\
         "
-    );
+    ));
 
     var newpanel = $('#draggablePanelList .panel:last');
 
@@ -74,14 +84,16 @@ function addCharacter() {
       }
     });
 
+    // Allow users to remove a panel
     $(newpanel).find('.remove-character').click(function(e){
       e.preventDefault();
       newpanel.remove();
     });
+
+    panelNum++;
 }
 
 // This function will sort the Bars based on their current initiative value.
-// TODO: 99 is a problem??????
 function sortBars() {
   $('.panel').sort(function (a, b) {
     var contentA =parseInt( $(a).find('.initiative > input').attr('data-prev'));

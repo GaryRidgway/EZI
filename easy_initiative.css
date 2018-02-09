@@ -1,5 +1,24 @@
+:root {
+  --main-bg-color: #f7fcff;
+  --info-bar-button-color: rgba(53,166,255, 0.8);
+  --panel-secondary-color: rgba(0,0,0, 0.7);
+
+  /* Material Shadows */
+  --m-s-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --m-s-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --m-s-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --m-s-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --m-s-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+  /* Material Transitions */
+  --m-t-1: all 0.3s cubic-bezier(.25,.8,.25,1);;
+
+  /* Border Radius */
+  --br: 2px;
+}
+
 body {
-  background-color: #f7fcff;
+  background-color: var(--main-bg-color);
   /*background-image: url(https://christopherklopp.files.wordpress.com/2013/07/whitepaper.jpg);*/
   background-repeat: no-repeat;
   background-size: auto 100vh;
@@ -23,6 +42,7 @@ body {
 }
 .info-bar-container {
   background-color: #242424;
+  box-shadow: var(--m-s-2);
 }
 .info-bar {
   margin-left: auto;
@@ -42,7 +62,7 @@ body {
   background-color: #000;
 }
 #add-button {
-  color: rgba(53,166,255, 0.8);
+  color: var(--info-bar-button-color);
 }
 .sort-initiative {
   padding: 8px 13px;
@@ -50,12 +70,13 @@ body {
   transition: all 0.3s ease-out;
   font-weight: bold;
   margin-left: auto;
+  margin-right: 11.5px
 }
 .sort-initiative:hover {
   background-color: #000;
 }
 #sort-button {
-  color: rgba(53,166,255, 0.8);
+  color: var(--info-bar-button-color);
 }
 .sort-initiative svg{
   transform: rotate(90deg);
@@ -65,9 +86,23 @@ body {
 }
 .panel {
   margin: 10px 0px;
-  border-color: rgba(51,51,51, 0.8);
+  border-color: var(--panel-secondary-color);
+  border-radius: var(--br);
   border: none;
   background-color: transparent !important;
+  transition: var(--m-t-1);
+
+  background-color: var(--info-bar-button-color) !important;
+  box-shadow: var(--m-s-1);
+}
+.ui-sortable-helper {
+  /*margin: -2px -2px;
+  padding: 2px 0px;*/
+  box-shadow: var(--m-s-2);
+}
+.ui-sortable-helper .panel-heading{
+
+
 }
 .panel-heading {
   display: flex;
@@ -75,51 +110,77 @@ body {
   position: relative;
   padding: 0;
   border-bottom: none;
-  border-radius: 3px;
-  background-color: rgba(82,165,231, 0.85) !important;
-  background-color: rgba(53,166,255, 0.8) !important;
+  border-radius: var(--br);
+  background-color: transparent !important;
 }
 .remove-character {
-  color: rgba(51,51,51, 0.8);
+  color: var(--panel-secondary-color);
   display: flex;
   font-weight: bold;
   font-size: 26px;
   padding: 0px 13px 0px 13px;
   transition: all 0.3s ease-out;
-  border-right: 1px solid rgba(51,51,51, 0.8);
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  /*border-right: 1px solid var(--panel-secondary-color);*/
+  border-top-left-radius: var(--br);
+  border-bottom-left-radius: var(--br);
 }
 .remove-character:hover {
   text-decoration: none;
   background-color: rgba(16,131,221, 0.8);
-  color: rgba(0,0,0, 0.7);;
+  color: rgba(0,0,0, 0.7);
 }
 .remove-character svg {
   align-self: center;
 }
 .character {
-  margin-right: auto;
-  padding-left: 13px;
+  height: 40px;
 }
 .character .input-box {
-  margin: 5px 5px 5px 0px;
+  height: 100%
 }
-
+.toggle-body {
+  display: flex;
+  font-size: 20px;
+  transition: all 0.3s ease-out;
+  padding: 0px 10px;
+  color: rgba(0,0,0, 0.45);
+}
+.toggle-body:hover {
+  text-decoration: none;
+  background-color: rgba(16,131,221, 0.8);
+  color: rgba(0,0,0, 0.3);
+}
+.toggle-body svg {
+  transition: all 0.3s ease-out;
+  transform: rotate(180deg);
+  align-self: center;
+}
+.toggle-body.collapsed svg {
+  transform: rotate(0deg);
+}
+.initiative {
+  margin-left: auto;
+  height: 40px;
+}
 .initiative .input-box {
-  width: 37px;
-  margin: 5px 7px;
+  text-align: center;
+  height: 100%;
+  width: 45px;
+  margin: 0px 15px;
 }
 .input-box {
   color: rgba(0,0,0, 0.7);
   padding: 0px 5px;
-  border-radius: 5px;
-  border-width: 2px;
-  border-color: #52a5e7;
-  border-color: rgba(51,51,51, 0.8);
+  border-radius: 0px;
+  border: 0;
+  /*border-bottom: 2px solid var(--panel-secondary-color);*/
   border-style: solid;
   font-size: 20px;
-  background-color: rgba(245,245,245, 0.7);
+  background-color: transparent;
+  background-color: rgba(255,255,255, 0.3);
+}
+.input-box {
+  outline: none;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
