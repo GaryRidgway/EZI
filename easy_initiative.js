@@ -41,13 +41,13 @@ function addCharacter() {
         "<li class='panel panel-info'>\
           <div class='panel-heading'>\
             <a class='remove-character'>\
-              <i class='fas fa-minus'></i>\
+              <i class='material-icons icon-hover-changer-1'>close</i>\
             </a>\
             <div class = 'character'>\
               <input class = 'input-box' type='text' name='character'>\
             </div>\
             <a class='toggle-body collapsed' data-toggle='collapse' data-target='#panel",panelNum,"'>\
-              <i class='fas fa-caret-down'></i>\
+              <i class='material-icons'>expand_more</i>\
             </a>\
             <div class = 'initiative'>\
               <input class = 'input-box' type='number' name='quantity' min='-9' max='99' data-sort=''>\
@@ -55,7 +55,10 @@ function addCharacter() {
           </div>\
           <div id='panel",panelNum,"' class='collapse'>\
             <div class='panel-body'>\
-              Hello World\
+              <div class='md-input-group'>\
+                <input class = 'm-input' type='text' required>\
+                <label><i class='fas fa-shield-alt'></i></label>\
+              </div>\
             </div>\
           </div>\
         </li>\

@@ -1,20 +1,24 @@
 :root {
+
+  /* Main Colors */
   --main-bg-color: #f7fcff;
-  --info-bar-button-color: rgba(53,166,255, 0.8);
-  --panel-secondary-color: rgba(0,0,0, 0.7);
+  --info-bar-button-color: rgba(53,166,255, 1);
+  --panel-secondary-color: rgba(0 ,0  ,0  , 0.6);
+  --thin-grey : rgba(0 ,0  ,0  , 0.45);;
+  --dark-main: rgba(16,131,221, 1);
 
   /* Material Shadows */
-  --m-s-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  --m-s-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  --m-s-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --m-s-1: 0 1px  3px  rgba(0,0,0,0.12), 0 1px  2px  rgba(0,0,0,0.24);
+  --m-s-2: 0 3px  6px  rgba(0,0,0,0.16), 0 3px  6px  rgba(0,0,0,0.23);
+  --m-s-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px  6px  rgba(0,0,0,0.23);
   --m-s-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   --m-s-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
   /* Material Transitions */
-  --m-t-1: all 0.3s cubic-bezier(.25,.8,.25,1);;
+  --m-t-1: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   /* Border Radius */
-  --br: 2px;
+  --br: 1px;
 }
 
 body {
@@ -52,7 +56,7 @@ body {
   font-size: 26px;
 }
 .add-character {
-  padding: 8px 13px;
+  padding: 4px;
   align-self: center;
   transition: all 0.3s ease-out;
   font-weight: bold;
@@ -64,13 +68,16 @@ body {
 #add-button {
   color: var(--info-bar-button-color);
 }
+#add-button i {
+  font-size: 35px;px;
+}
 .sort-initiative {
-  padding: 8px 13px;
+  padding: 4px;
   align-self: center;
   transition: all 0.3s ease-out;
   font-weight: bold;
   margin-left: auto;
-  margin-right: 11.5px
+  margin-right: 15px
 }
 .sort-initiative:hover {
   background-color: #000;
@@ -78,8 +85,8 @@ body {
 #sort-button {
   color: var(--info-bar-button-color);
 }
-.sort-initiative svg{
-  transform: rotate(90deg);
+#sort-button i {
+  font-size: 35px;
 }
 .container {
   padding: 15px;
@@ -91,18 +98,22 @@ body {
   border: none;
   background-color: transparent !important;
   transition: var(--m-t-1);
-
   background-color: var(--info-bar-button-color) !important;
   box-shadow: var(--m-s-1);
 }
 .ui-sortable-helper {
-  /*margin: -2px -2px;
-  padding: 2px 0px;*/
+  width: calc(100% - 30px + 4px) !important;
+  height: 44px !important;
   box-shadow: var(--m-s-2);
 }
-.ui-sortable-helper .panel-heading{
-
-
+.ui-sortable-helper .character, .ui-sortable-helper .initiative {
+  height: 44px;
+}
+.ui-sortable-helper .character input{
+  width: 223px;
+}
+.ui-sortable-helper .initiative input{
+  width: 49px;
 }
 .panel-heading {
   display: flex;
@@ -114,23 +125,23 @@ body {
   background-color: transparent !important;
 }
 .remove-character {
+  position: relative;
   color: var(--panel-secondary-color);
   display: flex;
   font-weight: bold;
-  font-size: 26px;
-  padding: 0px 13px 0px 13px;
+  padding: 0px 8px;
   transition: all 0.3s ease-out;
-  /*border-right: 1px solid var(--panel-secondary-color);*/
   border-top-left-radius: var(--br);
   border-bottom-left-radius: var(--br);
 }
 .remove-character:hover {
   text-decoration: none;
-  background-color: rgba(16,131,221, 0.8);
   color: rgba(0,0,0, 0.7);
 }
-.remove-character svg {
+.remove-character i {
+  font-size: 27px;
   align-self: center;
+  color: var(--thin-grey);
 }
 .character {
   height: 40px;
@@ -140,23 +151,25 @@ body {
 }
 .toggle-body {
   display: flex;
-  font-size: 20px;
   transition: all 0.3s ease-out;
-  padding: 0px 10px;
+  padding: 0px 6px;
   color: rgba(0,0,0, 0.45);
 }
 .toggle-body:hover {
   text-decoration: none;
-  background-color: rgba(16,131,221, 0.8);
-  color: rgba(0,0,0, 0.3);
+  color: rgba(0,0,0, 0.45);
 }
-.toggle-body svg {
+.toggle-body i {
   transition: all 0.3s ease-out;
   transform: rotate(180deg);
   align-self: center;
+  color: var(--thin-grey);
 }
-.toggle-body.collapsed svg {
+.toggle-body.collapsed i {
   transform: rotate(0deg);
+}
+.toggle-body.collapsed {
+  background-color: var(--info-bar-button-color);
 }
 .initiative {
   margin-left: auto;
@@ -166,7 +179,7 @@ body {
   text-align: center;
   height: 100%;
   width: 45px;
-  margin: 0px 15px;
+  margin: 0px 15px 0px 0px;
 }
 .input-box {
   color: rgba(0,0,0, 0.7);
@@ -176,14 +189,97 @@ body {
   /*border-bottom: 2px solid var(--panel-secondary-color);*/
   border-style: solid;
   font-size: 20px;
-  background-color: transparent;
   background-color: rgba(255,255,255, 0.3);
+  /*box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,0.12), inset -25px 0px 25px -25px rgba(0,0,0,0.12);*/
 }
 .input-box {
   outline: none;
+}
+.panel-body {
+  padding: 0;
+  border-top: 1px solid #249af7;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+* { box-sizing:border-box; }
+
+/* form starting stylings ------------------------------- */
+.md-input-group {
+  position:relative;
+  margin-bottom: 0px;
+}
+.m-input         {
+  font-size:18px;
+  padding: 0px 5px;
+  display:block;
+  width:70px;
+  height: 40px;
+  border:none;
+  background-color: transparent;
+  transition: all 0.6s ease-out;
+}
+.m-input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color: var(--thin-grey);
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:12px;
+  top:10px;
+  transition:0.4s ease all;
+  -moz-transition:0.4s ease all;
+  -webkit-transition:0.4s ease all;
+}
+
+/* active state */
+.m-input:focus ~ label, .m-input:valid ~ label {
+  left: 12px;
+  font-size: 18px;
+  color:#5264AE;
+}
+.m-input:focus, .m-input:valid {
+  margin-left: 43px;
+  background-color: rgba(255,255,255, 0.3);
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+.m-input:focus ~ .bar:before, .m-input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* Material Icon stuff */
+.icon-hover-changer-1{
+    transform: rotate(0deg);
+    transition: all 0.3s ease-out;
+
+}
+.remove-character:hover .icon-hover-changer-1{
+    transform: rotate(-90deg);
 }
