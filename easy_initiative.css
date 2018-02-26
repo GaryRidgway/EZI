@@ -4,7 +4,7 @@
   --main-bg-color: #f7fcff;
   --info-bar-button-color: rgba(53,166,255, 1);
   --panel-secondary-color: rgba(0 ,0  ,0  , 0.6);
-  --thin-grey : rgba(0 ,0  ,0  , 0.45);;
+  --thin-grey : rgba(0 ,0  ,0  , 0.55);
   --dark-main: rgba(16,131,221, 1);
 
   /* Material Shadows */
@@ -102,20 +102,10 @@ body {
   box-shadow: var(--m-s-1);
 }
 .ui-sortable-helper {
-  width: calc(100% - 30px + 4px) !important;
-  height: 44px !important;
   box-shadow: var(--m-s-2);
 }
-.ui-sortable-helper .character, .ui-sortable-helper .initiative {
-  height: 44px;
-}
-.ui-sortable-helper .character input{
-  width: 223px;
-}
-.ui-sortable-helper .initiative input{
-  width: 49px;
-}
 .panel-heading {
+  height: 40px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -142,22 +132,29 @@ body {
   font-size: 27px;
   align-self: center;
   color: var(--thin-grey);
+  transform: rotate(0deg);
+  transition: all 0.3s ease-out;
+}
+.remove-character i:hover {
+  transform: rotate(90deg);
 }
 .character {
-  height: 40px;
+  position: relative;
 }
 .character .input-box {
-  height: 100%
+  height: 88%;
+  margin: 1% 0%;
+  border-radius: 2px;
 }
 .toggle-body {
   display: flex;
   transition: all 0.3s ease-out;
   padding: 0px 6px;
-  color: rgba(0,0,0, 0.45);
+  color: --thin-grey;
 }
 .toggle-body:hover {
   text-decoration: none;
-  color: rgba(0,0,0, 0.45);
+  color: --thin-grey;
 }
 .toggle-body i {
   transition: all 0.3s ease-out;
@@ -177,27 +174,52 @@ body {
 }
 .initiative .input-box {
   text-align: center;
-  height: 100%;
+  height: 88%;
   width: 45px;
-  margin: 0px 15px 0px 0px;
+  margin: 3% 15px 3% 0px;
 }
 .input-box {
   color: rgba(0,0,0, 0.7);
   padding: 0px 5px;
-  border-radius: 0px;
+  border-radius: 2px;
   border: 0;
-  /*border-bottom: 2px solid var(--panel-secondary-color);*/
   border-style: solid;
   font-size: 20px;
-  background-color: rgba(255,255,255, 0.3);
-  /*box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,0.12), inset -25px 0px 25px -25px rgba(0,0,0,0.12);*/
-}
-.input-box {
+  background-color: rgba(255, 255, 255, 0.15);
   outline: none;
 }
 .panel-body {
   padding: 0;
+  height: 40px;
   border-top: 1px solid #249af7;
+  display: flex;
+  align-content: space-between;
+  margin: 0px 15px 0px 0px;
+}
+.md-input-group {
+  display: flex;
+  flex: 1;
+}
+.md-input-group input {
+  margin: 1% 0;
+  width: 100%;
+  border-radius: 2px;
+}
+.panel-icon {
+  margin: 0;
+  position: relative;
+  color: var(--panel-secondary-color);
+  display: flex;
+  font-weight: bold;
+  padding: 0px 10px 0px 11px;
+  transition: all 0.3s ease-out;
+  border-top-left-radius: var(--br);
+  border-bottom-left-radius: var(--br);
+}
+.panel-icon svg {
+  font-size: 20px;
+  align-self: center;
+  color: var(--thin-grey);
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -206,80 +228,3 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 * { box-sizing:border-box; }
-
-/* form starting stylings ------------------------------- */
-.md-input-group {
-  position:relative;
-  margin-bottom: 0px;
-}
-.m-input         {
-  font-size:18px;
-  padding: 0px 5px;
-  display:block;
-  width:70px;
-  height: 40px;
-  border:none;
-  background-color: transparent;
-  transition: all 0.6s ease-out;
-}
-.m-input:focus     { outline:none; }
-
-/* LABEL ======================================= */
-label          {
-  color: var(--thin-grey);
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:12px;
-  top:10px;
-  transition:0.4s ease all;
-  -moz-transition:0.4s ease all;
-  -webkit-transition:0.4s ease all;
-}
-
-/* active state */
-.m-input:focus ~ label, .m-input:valid ~ label {
-  left: 12px;
-  font-size: 18px;
-  color:#5264AE;
-}
-.m-input:focus, .m-input:valid {
-  margin-left: 43px;
-  background-color: rgba(255,255,255, 0.3);
-}
-
-/* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:300px; }
-.bar:before, .bar:after   {
-  content:'';
-  height:2px;
-  width:0;
-  bottom:1px;
-  position:absolute;
-  background:#5264AE;
-  transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -webkit-transition:0.2s ease all;
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%;
-}
-
-/* active state */
-.m-input:focus ~ .bar:before, .m-input:focus ~ .bar:after {
-  width:50%;
-}
-
-/* Material Icon stuff */
-.icon-hover-changer-1{
-    transform: rotate(0deg);
-    transition: all 0.3s ease-out;
-
-}
-.remove-character:hover .icon-hover-changer-1{
-    transform: rotate(-90deg);
-}

@@ -37,38 +37,13 @@ jQuery(function($) {
 var panelNum = 0
 // This function will add a new panel that can then be filled out for a new character.
 function addCharacter() {
-    $( "#draggablePanelList" ).append(''.concat(
-        "<li class='panel panel-info'>\
-          <div class='panel-heading'>\
-            <a class='remove-character'>\
-              <i class='material-icons icon-hover-changer-1'>close</i>\
-            </a>\
-            <div class = 'character'>\
-              <input class = 'input-box' type='text' name='character'>\
-            </div>\
-            <a class='toggle-body collapsed' data-toggle='collapse' data-target='#panel",panelNum,"'>\
-              <i class='material-icons'>expand_more</i>\
-            </a>\
-            <div class = 'initiative'>\
-              <input class = 'input-box' type='number' name='quantity' min='-9' max='99' data-sort=''>\
-            </div>\
-          </div>\
-          <div id='panel",panelNum,"' class='collapse'>\
-            <div class='panel-body'>\
-              <div class='md-input-group'>\
-                <input class = 'm-input' type='text' required>\
-                <label><i class='fas fa-shield-alt'></i></label>\
-              </div>\
-            </div>\
-          </div>\
-        </li>\
-        "
-    ));
+
+    addPanel();
 
     var newpanel = $('#draggablePanelList .panel:last');
 
     // Attach data sort listener on the panel.
-    $(newpanel).find('.input-box').on('input', function() {
+    $(newpanel).find('.ini').on('input', function() {
       $(this).attr("data-sort", $(this).val());
     });
 
@@ -103,4 +78,45 @@ function sortBars() {
     var contentB =parseInt( $(b).find('.initiative > input').attr('data-prev'));
     return (contentA < contentB) ? 1 : (contentA > contentB) ? -1 : -1;
   }).appendTo($("#draggablePanelList"));
+}
+
+// Panel Markup.
+function addPanel() {
+    $( "#draggablePanelList" ).append(''.concat(
+        "<li class='panel panel-info'>\
+          <div class='panel-heading'>\
+            <a class='remove-character'>\
+              <i class='material-icons icon-hover-changer-1'>close</i>\
+            </a>\
+            <div class = 'character'>\
+              <input class = 'input-box' type='text' name='character'>\
+            </div>\
+            <a class='toggle-body collapsed' data-toggle='collapse' data-target='#panel",panelNum,"'>\
+              <i class='material-icons'>expand_more</i>\
+            </a>\
+            <div class = 'initiative'>\
+              <input class = 'input-box ini' type='number' name='quantity' min='-9' max='99' data-sort=''>\
+            </div>\
+          </div>\
+          \
+          <div id='panel",panelNum,"' class='collapse'>\
+            <div class='panel-body'>\
+              <div class='md-input-group'>\
+                <label class = 'panel-icon'><i class='far fa-heart'></i></label>\
+                <input class = 'input-box' type='number'>\
+              </div>\
+              <div class='md-input-group'>\
+                <label class = 'panel-icon'><i class='fas fa-shield-alt'></i></label>\
+                <input class = 'input-box' type='number'>\
+              </div>\
+              <div class='md-input-group'>\
+                <label class = 'panel-icon'><i class='fas fa-bolt'></i></label>\
+                <input class = 'input-box' type='number'>\
+              </div>\
+            </div>\
+          </div>\
+          \
+        </li>\
+        "
+    ));
 }
