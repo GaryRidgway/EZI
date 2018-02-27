@@ -103,15 +103,15 @@ function addPanel() {
             <div class='panel-body'>\
               <div class='md-input-group'>\
                 <label class = 'panel-icon'><i class='far fa-heart'></i></label>\
-                <input class = 'input-box' type='number'>\
+                <input class = 'input-box' type='text'>\
               </div>\
               <div class='md-input-group'>\
                 <label class = 'panel-icon'><i class='fas fa-shield-alt'></i></label>\
-                <input class = 'input-box' type='number'>\
+                <input class = 'input-box' type='text'>\
               </div>\
               <div class='md-input-group'>\
                 <label class = 'panel-icon'><i class='fas fa-bolt'></i></label>\
-                <input class = 'input-box' type='number'>\
+                <input class = 'input-box' type='text'>\
               </div>\
             </div>\
           </div>\
